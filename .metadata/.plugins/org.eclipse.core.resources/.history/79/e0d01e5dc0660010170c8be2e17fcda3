@@ -1,0 +1,11 @@
+package com.hangman;
+
+public class HangMan {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		visusl lives = new visusl();
+		lives.RemaingLives();
+	}
+
+}
