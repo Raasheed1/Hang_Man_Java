@@ -7,6 +7,7 @@ public class visusl {
 		switch(lives) {
 		
 		case 0:
+			
 			System.out.println(" "
 					+ "___________\r\n"
 					+ "| /        | \r\n"
@@ -15,6 +16,7 @@ public class visusl {
 					+ "|         / \\\r\n"
 					+ "|");
 			break;
+			
 	
 		case 1:
 			System.out.println(" "

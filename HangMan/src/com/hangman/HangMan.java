@@ -14,27 +14,22 @@ public class HangMan {
 		
 		
 		int ran = 4;
-		int Chance=7;//Chance for play
-		int rannum = number.nextInt(99);
-		String ntos = rannum + "";  // converting num to string
+		int Chance=6;//Chance for play
+		int rannum = number.nextInt(9);
 //		lives.RemaingLives(Chance);
 		System.out.println(rannum);
-		System.out.println(ntos.length());
+//		System.out.println(ntos.length());
 		
-		for(int i=6;i>=0;i--) {
+		for(int i=Chance;i>=0;i--) {
 			int num= user.nextInt();
-			for(int j=0;j<ntos.length();j++ ) {
+			if(num!=rannum) {
+				lives.RemaingLives(i);
 				
-//				if(num==ntos.charAt(j)) {
-//					System.out.print(num);
-//					i++;
-//				}
-//				else {
-//					System.out.print("_" + "\n");
-//				}	
-				System.out.print("-");
-			}		
-			System.out.println("\n"+"lets try");
+				System.out.println("\n"+ (i-1)+"Chance left");
+			}
+			else{
+				System.out.println("You saved the person");
+			}
 		}	
 	}
 }
