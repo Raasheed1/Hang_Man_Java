@@ -2,6 +2,7 @@ package com.hangman;
 
 import java.util.Random;
 import java.util.Scanner;
+import java.util.HashSet;
 
 public class HangMan {
 
@@ -10,26 +11,53 @@ public class HangMan {
 		Scanner user = new Scanner(System.in);
 		
 		visusl lives = new visusl(); //create obj for visual
-		Random number = new Random();//Generating random number
+
+		HashSet<String> number3= new HashSet<>();
+		
+		String wantedword = word.getWord();
+		System.out.println(wantedword);  // for generating words
 		
 		
-		int ran = 4;
 		int Chance=6;//Chance for play
-		int rannum = number.nextInt(9);
+		String fori = "i";
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 //		lives.RemaingLives(Chance);
-		System.out.println(rannum);
+//		System.out.println(rannum);
 //		System.out.println(ntos.length());
 		
 		for(int i=Chance;i>=0;i--) {
-			int num= user.nextInt();
-			if(num!=rannum) {
-				lives.RemaingLives(i);
-				
-				System.out.println("\n"+ (i-1)+"Chance left");
+			String num= user.nextLine();
+			System.out.println(wantedword);
+			
+			if(number3.contains(num)) {
+				System.out.println("Aredy enterded choose another");
+				i++;
 			}
+			else if(!num.equals(wantedword)) {
+				lives.RemaingLives(i);
+				if(i==0) {
+					System.out.println("Died");
+				}
+				else {
+					System.out.println("\n"+ (i-1)+"Chance left");
+				}
+			}
+				
 			else{
 				System.out.println("You saved the person");
 			}
+			number3.add(num);
 		}	
 	}
 }
