@@ -25,9 +25,7 @@ public class HangMan {
 //		lives.RemaingLives(Chance);
 //		System.out.println(rannum);
 //		System.out.println(ntos.length());
-		for(int j=0;j<wantedword.length();j++) {
-			display[j] = '_';
-		}
+		
 		
 		
 		for(int i=Chance;i>=0;i--) {
@@ -35,7 +33,7 @@ public class HangMan {
 			System.out.println(wantedword);
 			
 			for(int j=0;j<wantedword.length();j++) {
-				display[j] = '_';
+				display[i] = '_';
 			}
 			
 			if(SingleWord.length()==1) {
