@@ -1,18 +1,15 @@
 package com.hangman;
-
 import java.util.Random;
 import java.util.Scanner;
 import java.util.HashSet;
 
 public class HangMan {
-
 	public static void main(String[] args) {
 
 		Scanner user = new Scanner(System.in);
 		
 		visusl lives = new visusl(); //create obj for visual
-
-		HashSet<Character> EnteredLetter= new HashSet<>();
+		HashSet<Character> EnteredLetter= new HashSet<>();//for finding repeted words
 		
 		String wantedword = word.getWord();
 		System.out.println(wantedword);  // for generating words
@@ -20,42 +17,65 @@ public class HangMan {
 		
 		int Chance=6;//Chance for play
 		
-		char[] display= new char[wantedword.length()];		
+		char[] display= new char[wantedword.length()];//assign size	
 		
-//		lives.RemaingLives(Chance);
-//		System.out.println(rannum);
-//		System.out.println(ntos.length());
 		for(int j=0;j<wantedword.length();j++) {
-			display[j] = '_';
+			System.out.print(display[j]+"_");	
 		}
+		System.out.println();
+		
 		
 		
 		for(int i=Chance;i>=0;i--) {
-			String SingleWord= user.nextLine().toLowerCase();
-			System.out.println(wantedword);
 			
-			for(int j=0;j<wantedword.length();j++) {
-				display[j] = '_';
-			}
+			int wl = i;
+			String SingleWord= user.nextLine().toLowerCase();		
 			
 			if(SingleWord.length()==1) {
 				char letter = SingleWord.charAt(0);
+//				char letter = user.next().charAt(0);//u can't use as this char cannot be lowercase
+				
 				if(EnteredLetter.contains(letter)) {
 					System.out.println("Aredy enterded choose another");
 					i++;
 				}
+				
 				else{
 					EnteredLetter.add(letter);
-					for (int j = 0; j < wantedword.length(); i++) {
-						if (wantedword.charAt(i) == letter) {
-							display[i] = letter;
+					for (int j = 0; j < wantedword.length(); j++) {
+						if (wantedword.charAt(j) == letter) {
+							display[j]=letter;
+							i++;
 						}
 					}
 				}
 			}
-				
-			
-			
-		}	
+			if(wl==i) {
+				System.out.println("wrong word");
+			}
+		
+							
+			for(int j=0;j<wantedword.length();j++) {
+				if(display[j]==0) {
+					System.out.print("_ ");
+				}
+				else {
+					System.out.print(display[j]+" ");						
+				}
+			}
+			System.out.println();
+			System.out.println(i +" Chance left");
+			lives.RemaingLives(i);
+			if(i==0){
+				System.out.println("he died");
+				}
+			if(wantedword.equals(new String(display))){
+				System.out.println("He is alive");
+				System.out.println("The word is "+ wantedword);
+				break;
+				}
+		}
+		
+//		System.out.println(wantedword.equals(new String(display)) ? "you gusses it":"The man died");
 	}
 }

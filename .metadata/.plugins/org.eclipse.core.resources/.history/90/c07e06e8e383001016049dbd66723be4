@@ -1,0 +1,67 @@
+package com.hangman;
+
+import java.util.Random;
+import java.util.Scanner;
+import java.util.HashSet;
+
+public class HangMan {
+
+	public static void main(String[] args) {
+
+		Scanner user = new Scanner(System.in);
+		
+		visusl lives = new visusl(); //create obj for visual
+
+		HashSet<Character> EnteredLetter= new HashSet<>();
+		
+		String wantedword = word.getWord();
+		System.out.println(wantedword);  // for generating words
+		
+		
+		int Chance=6;//Chance for play
+		
+		char[] display= new char[wantedword.length()];		
+		
+//		lives.RemaingLives(Chance);
+//		System.out.println(rannum);
+//		System.out.println(ntos.length());
+		for(int j=0;j<wantedword.length();j++) {
+			System.out.print(display[j]+"_");	
+		}
+		System.out.println();
+		
+		
+		
+		for(int i=Chance;i>=0;i--) {
+			
+			String SingleWord= user.nextLine().toLowerCase();
+			System.out.println(wantedword);		
+			
+			if(SingleWord.length()==1) {
+				char letter = SingleWord.charAt(0);
+				if(EnteredLetter.contains(letter)) {
+					System.out.println("Aredy enterded choose another");
+					i++;
+				}
+				else{
+					EnteredLetter.add(letter);
+					for (int j = 0; j < wantedword.length(); j++) {
+						if (wantedword.charAt(j) == letter) {
+							display[j]=letter;
+							i++;
+						}
+					}
+				}
+			}
+							
+			for(int j=0;j<wantedword.length();j++) {
+				System.out.print(display[j]+"_");	
+			}
+			System.out.println();
+			System.out.println("Chance left"+ i );
+			lives.RemaingLives(i);
+		}	
+		
+		System.out.println(wantedword.equals(new String(display)) ? "you gusses it":"The man died");
+	}
+}
