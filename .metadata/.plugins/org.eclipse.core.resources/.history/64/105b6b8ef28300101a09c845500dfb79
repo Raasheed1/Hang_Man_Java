@@ -9,7 +9,7 @@ public class word {
 
 	public static String getWord() {
 		Random ran = new Random();
-		int index = ran.nextInt(words.length);//Gentrate number under String lenght
+		int index = ran.nextInt(words.length);
 		return words[index].toLowerCase(); 
 	}
 }

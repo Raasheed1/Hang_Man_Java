@@ -43,8 +43,8 @@ public class HangMan {
 				
 				else{
 					EnteredLetter.add(letter);
-					int inc=0;
 					for (int j = 0; j < wantedword.length(); j++) {
+						int inc=0;
 						if (wantedword.charAt(j) == letter) {
 							display[j]=letter;
 							inc++;

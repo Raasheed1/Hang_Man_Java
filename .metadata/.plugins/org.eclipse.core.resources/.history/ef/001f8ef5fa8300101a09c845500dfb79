@@ -12,7 +12,7 @@ public class HangMan {
 		HashSet<Character> EnteredLetter= new HashSet<>();//for finding repeted words
 		
 		String wantedword = word.getWord();
-		System.out.println(wantedword);  // for generating words
+//		System.out.println(wantedword);  // for generating words
 		
 		
 		int Chance=6;//Chance for play
@@ -43,14 +43,10 @@ public class HangMan {
 				
 				else{
 					EnteredLetter.add(letter);
-					int inc=0;
 					for (int j = 0; j < wantedword.length(); j++) {
 						if (wantedword.charAt(j) == letter) {
 							display[j]=letter;
-							inc++;
-							if(inc==1) {
-								i++;
-							}
+							i++;
 						}
 					}
 				}
